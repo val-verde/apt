@@ -239,17 +239,24 @@ add_subdirectory(apt-pkg)
 add_subdirectory(apt-private)
 add_subdirectory(cmdline)
 add_subdirectory(completions)
+
+if (WITH_DOC)
 add_subdirectory(doc)
+endif()
+
 add_subdirectory(dselect)
 add_subdirectory(ftparchive)
 add_subdirectory(methods)
+
+if (WITH_TESTS)
 add_subdirectory(test)
+endif()
 
 if (USE_NLS)
 add_subdirectory(po)
 
 # Link update-po4a into the update-po target
-add_dependencies(update-po update-po4a)
+# add_dependencies(update-po update-po4a)
 endif()
 
 # Create our directories.
