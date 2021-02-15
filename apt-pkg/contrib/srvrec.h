@@ -9,11 +9,16 @@
 #ifndef SRVREC_H
 #define SRVREC_H
 
+#include <cstdint>
 #include <string>
 #include <vector>
 #include <arpa/nameser.h>
 
 #include <apt-pkg/macros.h>
+
+#ifndef u_int16_t
+typedef uint16_t u_int16_t;
+#endif
 
 class APT_PUBLIC SrvRec
 {
