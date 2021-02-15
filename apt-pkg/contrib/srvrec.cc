@@ -59,6 +59,7 @@ bool GetSrvRecords(std::string host, int port, std::vector<SrvRec> &Result)
 
 bool GetSrvRecords(std::string name, std::vector<SrvRec> &Result)
 {
+#ifdef __GLIBC__
    unsigned char answer[PACKETSZ];
    int answer_len, compressed_name_len;
    int answer_count;
@@ -152,6 +153,9 @@ bool GetSrvRecords(std::string name, std::vector<SrvRec> &Result)
 		   << '\n';
 
    return true;
+#else
+   return false;
+#endif
 }
 
 SrvRec PopFromSrvRecs(std::vector<SrvRec> &Recs)
