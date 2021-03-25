@@ -53,7 +53,7 @@ target_include_directories(apt-pkg
 )
 
 target_link_libraries(apt-pkg
-                      PRIVATE -lutil ${CMAKE_DL_LIBS} ${RESOLV_LIBRARIES}
+                      PRIVATE ${CMAKE_DL_LIBS}
                              ${CMAKE_THREAD_LIBS_INIT}
                              ${ZLIB_LIBRARIES}
                              ${BZIP2_LIBRARIES}
