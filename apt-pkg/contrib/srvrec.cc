@@ -45,11 +45,17 @@ bool GetSrvRecords(std::string host, int port, std::vector<SrvRec> &Result)
 
    std::string target;
    int res;
-   struct servent s_ent_buf;
    struct servent *s_ent = nullptr;
+
+#if defined(__ANDROID__)
+   s_ent = getservbyport(htons(port), "tcp");
+   res = 0;
+#else
+   struct servent s_ent_buf;
    std::vector<char> buf(1024);
 
    res = getservbyport_r(htons(port), "tcp", &s_ent_buf, buf.data(), buf.size(), &s_ent);
+#endif
    if (res != 0 || s_ent == nullptr)
       return false;
 
