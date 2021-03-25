@@ -126,7 +126,9 @@ bool AcquireRun(pkgAcquire &Fetcher, int const PulseInterval, bool * const Failu
 									/*}}}*/
 bool CheckFreeSpaceBeforeDownload(std::string const &Dir, unsigned long long FetchBytes)/*{{{*/
 {
+#ifndef RAMFS_MAGIC
    uint32_t const RAMFS_MAGIC = 0x858458f6;
+#endif
    /* Check for enough free space, but only if we are actually going to
       download */
    if (_config->FindB("APT::Get::Print-URIs", false) == true ||
