@@ -65,6 +65,7 @@ target_link_libraries(apt-pkg
                              ${ICONV_LIBRARIES}
                              $<$<BOOL:${GCRYPT_FOUND}>:${GCRYPT_LIBRARIES}>
                              $<$<BOOL:${XXHASH_FOUND}>:${XXHASH_LIBRARIES}>
+                             ${RESOLV_LIBRARIES}
 )
 set_target_properties(apt-pkg PROPERTIES VERSION ${MAJOR}.${MINOR})
 set_target_properties(apt-pkg PROPERTIES SOVERSION ${MAJOR})
